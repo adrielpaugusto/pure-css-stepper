@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+.stepper {
+  display: block;
+  max-width: 480px;
+  margin: 16px auto;
+}
+.stepper-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  font-size: 10px;
+  color: #ccc;
+}
+.stepper-item .step-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  margin-bottom: 6px;
+  z-index: 2;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background: #fff;
+}
+.stepper-item .step-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0 2px;
+  text-align: center;
+  line-height: 12px;
+  word-break: break-word;
+}
+
+.stepper-item::before,
+.stepper-item::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  top: 8px;
+  left: -50%;
+  z-index: 1;
+  border-bottom: 2px solid #ccc;
+}
+.stepper-item::before {
+  left: -50%;
+}
+.stepper-item::after {
+  left: 50%;
+}
+.stepper-item:first-child::before,
+.stepper-item:last-child::after {
+  content: none;
+}
+
+@media (min-width: 576px) {
+  .stepper-item {
+    font-size: 11px;
+    line-height: 13px;
+  }
+  .stepper-item .step-counter {
+    width: 20px;
+    height: 20px;
+  }
+  .stepper-item::before,
+  .stepper-item::after {
+    top: 9px;
+  }
+}
+
+@media (min-width: 768px) {
+  .stepper-item {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .stepper-item .step-counter {
+    width: 24px;
+    height: 24px;
+  }
+  .stepper-item::before,
+  .stepper-item::after {
+    top: 11px;
+  }
+}
+
+.stepper-item.active .step-counter {
+  color: #fff;
+  border-color: #4bb543;
+  background-color: #4bb543;
+}
+.stepper-item.active .step-name {
+  color: #4bb543;
+}
+.stepper-item.active::before {
+  border-color: #4bb543;
+}
+
+.stepper-item.completed .step-counter {
+  color: #4bb543;
+  border-color: #4bb543;
+}
+.stepper-item.completed .step-name {
+  color: #4bb543;
+}
+.stepper-item.completed::before {
+  border-color: #4bb543;
+}
